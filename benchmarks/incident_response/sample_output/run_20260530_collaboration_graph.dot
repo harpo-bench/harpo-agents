@@ -1,0 +1,26 @@
+digraph IncidentResponse {
+  rankdir=LR;
+  node [shape=box];
+  security_analyst -> infra_engineer [label="report"];
+  security_analyst -> forensics_agent [label="report"];
+  infra_engineer -> forensics_agent [label="report"];
+  security_analyst -> compliance_agent [label="report"];
+  forensics_agent -> compliance_agent [label="report"];
+  security_analyst -> comms_officer [label="report"];
+  forensics_agent -> incident_commander [label="report"];
+  security_analyst -> incident_commander [label="report"];
+  infra_engineer -> incident_commander [label="report"];
+  compliance_agent -> incident_commander [label="report"];
+  comms_officer -> incident_commander [label="report"];
+  security_analyst -> infra_engineer [label="CONTRADICTS: Attack vector" color=red style=dashed];
+  security_analyst -> forensics_agent [label="CONTRADICTS: Intrusion timeline" color=red style=dashed];
+  infra_engineer -> forensics_agent [label="CONTRADICTS: Compromised host cou" color=red style=dashed];
+  compliance_agent -> comms_officer [label="CONTRADICTS: Notification deadlin" color=red style=dashed];
+  security_analyst -> infra_engineer [label="assumption" color=orange style=dotted];
+  security_analyst -> compliance_agent [label="assumption" color=orange style=dotted];
+  security_analyst -> comms_officer [label="assumption" color=orange style=dotted];
+  security_analyst -> incident_commander [label="assumption" color=orange style=dotted];
+  security_analyst -> incident_commander [label="assumption" color=orange style=dotted];
+  infra_engineer -> incident_commander [label="assumption" color=orange style=dotted];
+  compliance_agent -> comms_officer [label="assumption" color=orange style=dotted];
+}

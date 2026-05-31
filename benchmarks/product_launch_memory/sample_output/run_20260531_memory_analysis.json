@@ -1,0 +1,1657 @@
+{
+  "benchmark": "product_launch_memory_v2",
+  "timestamp": "20260531_051440",
+  "model": "claude-haiku-4-5-20251001",
+  "total_steps": 84,
+  "memory_ops": 24,
+  "overall_score": 0.6001,
+  "store_summary": {
+    "keys": [
+      "budget",
+      "scope",
+      "launch_date",
+      "market_priorities",
+      "staffing",
+      "regulatory_requirements"
+    ],
+    "total_writes": 9,
+    "total_reads": 15,
+    "stale_reads": 3,
+    "per_key": {
+      "budget": {
+        "current_version": 2,
+        "current_value": "$2M",
+        "history_len": 2
+      },
+      "scope": {
+        "current_version": 2,
+        "current_value": "EU_mandatory",
+        "history_len": 2
+      },
+      "launch_date": {
+        "current_version": 2,
+        "current_value": "March_2025",
+        "history_len": 2
+      },
+      "market_priorities": {
+        "current_version": 1,
+        "current_value": "Enterprise_B2B",
+        "history_len": 1
+      },
+      "staffing": {
+        "current_version": 1,
+        "current_value": "6_person_team",
+        "history_len": 1
+      },
+      "regulatory_requirements": {
+        "current_version": 1,
+        "current_value": "GDPR+SOC2+SCCs",
+        "history_len": 1
+      }
+    }
+  },
+  "stale_reads": {
+    "total_stale": 3,
+    "corrected": 3,
+    "uncorrected": 0,
+    "affected_agents": [
+      "engineering-lead",
+      "marketing-lead",
+      "operations-lead"
+    ],
+    "records": [
+      {
+        "agent": "engineering-lead",
+        "key": "budget",
+        "stale_value": "$5M",
+        "current_value": "$2M",
+        "version_lag": 1,
+        "failure_type": "resource_overestimation",
+        "severity": "HIGH",
+        "corrected": true,
+        "correction_agent": "finance-lead",
+        "consequence": "Agent planned resources based on outdated budget allocation."
+      },
+      {
+        "agent": "marketing-lead",
+        "key": "scope",
+        "stale_value": "US_only",
+        "current_value": "EU_mandatory",
+        "version_lag": 1,
+        "failure_type": "scope_mismatch",
+        "severity": "HIGH",
+        "corrected": true,
+        "correction_agent": "legal-lead",
+        "consequence": "Agent designed campaign/plan for wrong geographic scope."
+      },
+      {
+        "agent": "operations-lead",
+        "key": "launch_date",
+        "stale_value": "December_2024",
+        "current_value": "March_2025",
+        "version_lag": 1,
+        "failure_type": "timeline_conflict",
+        "severity": "MEDIUM",
+        "corrected": true,
+        "correction_agent": "finance-lead",
+        "consequence": "Agent scheduled work against incorrect launch timeline."
+      }
+    ]
+  },
+  "lineage": {
+    "total_writes": 9,
+    "total_reads": 15,
+    "stale_reads": 3,
+    "keys": {
+      "budget": {
+        "writes": 2,
+        "reads": 5,
+        "stale_reads": 1,
+        "nodes": [
+          {
+            "agent": "product-manager",
+            "operation": "write",
+            "value": "$5M",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "product-manager",
+            "operation": "read",
+            "value": "$5M",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "finance-lead",
+            "operation": "read",
+            "value": "$5M",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "finance-lead",
+            "operation": "update",
+            "value": "$2M",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "finance-lead",
+            "operation": "read",
+            "value": "$2M",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "engineering-lead",
+            "operation": "read",
+            "value": "$2M",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "engineering-lead",
+            "operation": "read",
+            "value": "$5M",
+            "version": 1,
+            "is_stale": true
+          }
+        ]
+      },
+      "scope": {
+        "writes": 2,
+        "reads": 6,
+        "stale_reads": 1,
+        "nodes": [
+          {
+            "agent": "product-manager",
+            "operation": "write",
+            "value": "US_only",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "product-manager",
+            "operation": "read",
+            "value": "US_only",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "legal-lead",
+            "operation": "read",
+            "value": "US_only",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "legal-lead",
+            "operation": "update",
+            "value": "EU_mandatory",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "legal-lead",
+            "operation": "read",
+            "value": "EU_mandatory",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "marketing-lead",
+            "operation": "read",
+            "value": "EU_mandatory",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "marketing-lead",
+            "operation": "read",
+            "value": "US_only",
+            "version": 1,
+            "is_stale": true
+          },
+          {
+            "agent": "marketing-lead",
+            "operation": "read",
+            "value": "EU_mandatory",
+            "version": 2,
+            "is_stale": false
+          }
+        ]
+      },
+      "launch_date": {
+        "writes": 2,
+        "reads": 4,
+        "stale_reads": 1,
+        "nodes": [
+          {
+            "agent": "product-manager",
+            "operation": "write",
+            "value": "December_2024",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "product-manager",
+            "operation": "read",
+            "value": "December_2024",
+            "version": 1,
+            "is_stale": false
+          },
+          {
+            "agent": "finance-lead",
+            "operation": "update",
+            "value": "March_2025",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "operations-lead",
+            "operation": "read",
+            "value": "March_2025",
+            "version": 2,
+            "is_stale": false
+          },
+          {
+            "agent": "operations-lead",
+            "operation": "read",
+            "value": "December_2024",
+            "version": 1,
+            "is_stale": true
+          },
+          {
+            "agent": "operations-lead",
+            "operation": "read",
+            "value": "March_2025",
+            "version": 2,
+            "is_stale": false
+          }
+        ]
+      },
+      "market_priorities": {
+        "writes": 1,
+        "reads": 0,
+        "stale_reads": 0,
+        "nodes": [
+          {
+            "agent": "product-manager",
+            "operation": "write",
+            "value": "Enterprise_B2B",
+            "version": 1,
+            "is_stale": false
+          }
+        ]
+      },
+      "staffing": {
+        "writes": 1,
+        "reads": 0,
+        "stale_reads": 0,
+        "nodes": [
+          {
+            "agent": "product-manager",
+            "operation": "write",
+            "value": "6_person_team",
+            "version": 1,
+            "is_stale": false
+          }
+        ]
+      },
+      "regulatory_requirements": {
+        "writes": 1,
+        "reads": 0,
+        "stale_reads": 0,
+        "nodes": [
+          {
+            "agent": "legal-lead",
+            "operation": "write",
+            "value": "GDPR+SOC2+SCCs",
+            "version": 1,
+            "is_stale": false
+          }
+        ]
+      }
+    }
+  },
+  "damage": {
+    "total_damage": 0.968,
+    "corrected_damage": 0.968,
+    "uncorrected_damage": 0,
+    "pct_from_memory": 80.0,
+    "entries": [
+      {
+        "key": "scope",
+        "agent": "marketing-lead",
+        "failure_type": "Geographic scope mismatch",
+        "damage_score": 0.36,
+        "cascading_to": [
+          "product-manager",
+          "operations-lead"
+        ],
+        "corrected": true,
+        "narrative": "Marketing Lead designed a US-only campaign while the actual requirement mandated EU coverage, creating a compliance and go-to-market gap."
+      },
+      {
+        "key": "budget",
+        "agent": "engineering-lead",
+        "failure_type": "Resource over-allocation",
+        "damage_score": 0.338,
+        "cascading_to": [
+          "product-manager",
+          "operations-lead"
+        ],
+        "corrected": true,
+        "narrative": "Engineering Lead planned development resources assuming $5M budget, leading to a $3M over-allocation relative to the actual $2M constraint."
+      },
+      {
+        "key": "launch_date",
+        "agent": "operations-lead",
+        "failure_type": "Timeline conflict",
+        "damage_score": 0.27,
+        "cascading_to": [
+          "product-manager",
+          "engineering-lead"
+        ],
+        "corrected": true,
+        "narrative": "Operations Lead scheduled logistics and vendor contracts for December, while Finance had updated the launch to March, causing contract conflicts."
+      }
+    ]
+  },
+  "recovery": {
+    "recovered_keys": [
+      "budget",
+      "scope",
+      "launch_date"
+    ],
+    "unrecovered_keys": [],
+    "avg_recovery_score": 1.0,
+    "memory_vs_reflection": "memory",
+    "events": [
+      {
+        "key": "budget",
+        "stale_agent": "engineering-lead",
+        "recovery_agent": "finance-lead",
+        "corrective_value": "$2M",
+        "recovery_score": 1.0,
+        "propagation_fixed": true,
+        "narrative": "Finance Lead updated budget to $2M; Engineering Lead re-read the corrected value and revised the resource plan to fit the new constraint."
+      },
+      {
+        "key": "scope",
+        "stale_agent": "marketing-lead",
+        "recovery_agent": "legal-lead",
+        "corrective_value": "EU_mandatory",
+        "recovery_score": 1.0,
+        "propagation_fixed": true,
+        "narrative": "Legal Lead updated scope to EU-mandatory; Marketing Lead received the correction and redesigned the campaign to cover both US and EU markets."
+      },
+      {
+        "key": "launch_date",
+        "stale_agent": "operations-lead",
+        "recovery_agent": "finance-lead",
+        "corrective_value": "March_2025",
+        "recovery_score": 1.0,
+        "propagation_fixed": true,
+        "narrative": "Finance Lead updated launch date to March; Operations Lead re-read and rescheduled vendor contracts and logistics accordingly."
+      }
+    ]
+  },
+  "propagation": {
+    "max_propagation_depth": 1,
+    "total_affected_agents": 4,
+    "chains": [
+      {
+        "key": "budget",
+        "original_writer": "product-manager",
+        "stale_value": "$5M",
+        "correct_value": "$2M",
+        "affected_count": 3,
+        "nodes": [
+          {
+            "agent": "engineering-lead",
+            "order": 0,
+            "value": "$5M",
+            "stale": true
+          },
+          {
+            "agent": "product-manager",
+            "order": 1,
+            "value": "$5M",
+            "stale": true
+          },
+          {
+            "agent": "operations-lead",
+            "order": 1,
+            "value": "$5M",
+            "stale": true
+          }
+        ]
+      },
+      {
+        "key": "scope",
+        "original_writer": "product-manager",
+        "stale_value": "US_only",
+        "correct_value": "EU_mandatory",
+        "affected_count": 3,
+        "nodes": [
+          {
+            "agent": "marketing-lead",
+            "order": 0,
+            "value": "US_only",
+            "stale": true
+          },
+          {
+            "agent": "product-manager",
+            "order": 1,
+            "value": "US_only",
+            "stale": true
+          },
+          {
+            "agent": "operations-lead",
+            "order": 1,
+            "value": "US_only",
+            "stale": true
+          }
+        ]
+      },
+      {
+        "key": "launch_date",
+        "original_writer": "product-manager",
+        "stale_value": "December_2024",
+        "correct_value": "March_2025",
+        "affected_count": 2,
+        "nodes": [
+          {
+            "agent": "operations-lead",
+            "order": 0,
+            "value": "December_2024",
+            "stale": true
+          },
+          {
+            "agent": "product-manager",
+            "order": 1,
+            "value": "December_2024",
+            "stale": true
+          }
+        ]
+      }
+    ]
+  },
+  "correction_vs_recovery": {
+    "correction_count": 3,
+    "recovery_count": 3,
+    "corrections_with_recovery": [
+      "budget",
+      "launch_date",
+      "scope"
+    ],
+    "corrections_without_recovery": [],
+    "recoveries_without_correction": [],
+    "corrections": [
+      {
+        "key": "budget",
+        "stale_value": "$5M",
+        "corrected_value": "$2M",
+        "correction_agent": "finance-lead",
+        "stale_agents": [
+          "engineering-lead"
+        ],
+        "severity": "HIGH"
+      },
+      {
+        "key": "scope",
+        "stale_value": "US_only",
+        "corrected_value": "EU_mandatory",
+        "correction_agent": "legal-lead",
+        "stale_agents": [
+          "marketing-lead"
+        ],
+        "severity": "HIGH"
+      },
+      {
+        "key": "launch_date",
+        "stale_value": "December_2024",
+        "corrected_value": "March_2025",
+        "correction_agent": "finance-lead",
+        "stale_agents": [
+          "operations-lead"
+        ],
+        "severity": "MEDIUM"
+      }
+    ],
+    "recoveries": [
+      {
+        "key": "budget",
+        "recovering_agent": "engineering-lead",
+        "recovery_type": "mixed",
+        "recovery_confidence": 0.92,
+        "recovery_impact": "Engineering Lead revised resource plan: reduced headcount from 20 to 8 engineers and cut cloud infrastructure budget from $1.2M to $600K to fit $2M constraint.",
+        "correction_lag": 1
+      },
+      {
+        "key": "scope",
+        "recovering_agent": "marketing-lead",
+        "recovery_type": "mixed",
+        "recovery_confidence": 0.92,
+        "recovery_impact": "Marketing Lead redesigned campaign to include EU markets, adding GDPR-compliant messaging and separate regional targeting for North America and Europe.",
+        "correction_lag": 1
+      },
+      {
+        "key": "launch_date",
+        "recovering_agent": "operations-lead",
+        "recovery_type": "mixed",
+        "recovery_confidence": 0.92,
+        "recovery_impact": "Operations Lead rescheduled all vendor contracts from December 2024 to March 2025, avoiding cancellation penalties and aligning logistics with the revised timeline.",
+        "correction_lag": 1
+      }
+    ]
+  },
+  "multi_hop_propagation": {
+    "max_propagation_depth": 2,
+    "total_agents_affected": 6,
+    "deepest_chain_key": "budget",
+    "propagation_summary": "3 memory key(s) propagated across up to 2 hop(s). Deepest: budget (5 agents affected). Total unique agents contaminated: 6.",
+    "chains": [
+      {
+        "key": "budget",
+        "origin_writer": "product-manager",
+        "stale_value": "$5M",
+        "correct_value": "$2M",
+        "depth": 2,
+        "radius": 5,
+        "affected_agents": [
+          "engineering-lead",
+          "legal-lead",
+          "marketing-lead",
+          "operations-lead",
+          "product-manager"
+        ],
+        "hops": [
+          {
+            "agent": "engineering-lead",
+            "depth": 0,
+            "value_inherited": "$5M",
+            "how_inherited": "direct_stale_read",
+            "from": "memory_store"
+          },
+          {
+            "agent": "product-manager",
+            "depth": 1,
+            "value_inherited": "$5M",
+            "how_inherited": "report_reference",
+            "from": "engineering-lead"
+          },
+          {
+            "agent": "operations-lead",
+            "depth": 1,
+            "value_inherited": "$5M",
+            "how_inherited": "context_injection",
+            "from": "engineering-lead"
+          },
+          {
+            "agent": "legal-lead",
+            "depth": 2,
+            "value_inherited": "$5M",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          },
+          {
+            "agent": "marketing-lead",
+            "depth": 2,
+            "value_inherited": "$5M",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          }
+        ]
+      },
+      {
+        "key": "scope",
+        "origin_writer": "product-manager",
+        "stale_value": "US_only",
+        "correct_value": "EU_mandatory",
+        "depth": 2,
+        "radius": 5,
+        "affected_agents": [
+          "engineering-lead",
+          "finance-lead",
+          "marketing-lead",
+          "operations-lead",
+          "product-manager"
+        ],
+        "hops": [
+          {
+            "agent": "marketing-lead",
+            "depth": 0,
+            "value_inherited": "US_only",
+            "how_inherited": "direct_stale_read",
+            "from": "memory_store"
+          },
+          {
+            "agent": "product-manager",
+            "depth": 1,
+            "value_inherited": "US_only",
+            "how_inherited": "report_reference",
+            "from": "marketing-lead"
+          },
+          {
+            "agent": "operations-lead",
+            "depth": 1,
+            "value_inherited": "US_only",
+            "how_inherited": "context_injection",
+            "from": "marketing-lead"
+          },
+          {
+            "agent": "engineering-lead",
+            "depth": 2,
+            "value_inherited": "US_only",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          },
+          {
+            "agent": "finance-lead",
+            "depth": 2,
+            "value_inherited": "US_only",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          }
+        ]
+      },
+      {
+        "key": "launch_date",
+        "origin_writer": "product-manager",
+        "stale_value": "December_2024",
+        "correct_value": "March_2025",
+        "depth": 2,
+        "radius": 5,
+        "affected_agents": [
+          "engineering-lead",
+          "legal-lead",
+          "marketing-lead",
+          "operations-lead",
+          "product-manager"
+        ],
+        "hops": [
+          {
+            "agent": "operations-lead",
+            "depth": 0,
+            "value_inherited": "December_2024",
+            "how_inherited": "direct_stale_read",
+            "from": "memory_store"
+          },
+          {
+            "agent": "product-manager",
+            "depth": 1,
+            "value_inherited": "December_2024",
+            "how_inherited": "report_reference",
+            "from": "operations-lead"
+          },
+          {
+            "agent": "engineering-lead",
+            "depth": 2,
+            "value_inherited": "December_2024",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          },
+          {
+            "agent": "legal-lead",
+            "depth": 2,
+            "value_inherited": "December_2024",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          },
+          {
+            "agent": "marketing-lead",
+            "depth": 2,
+            "value_inherited": "December_2024",
+            "how_inherited": "context_injection",
+            "from": "product-manager"
+          }
+        ]
+      }
+    ]
+  },
+  "contribution_attribution": {
+    "memory": {
+      "pct": 46.4,
+      "why": "2 critical stale read(s) (budget/scope/regulatory); 1 non-critical stale read(s); propagated to 6 downstream agent(s) \u2192 46% attribution."
+    },
+    "reasoning": {
+      "pct": 23.8,
+      "why": "3 contradiction(s) \u2192 24% attribution."
+    },
+    "coordination": {
+      "pct": 29.8,
+      "why": "5 cross-agent conflict(s) \u2192 30% attribution."
+    },
+    "tools": {
+      "pct": 0.0,
+      "why": "No tool failures detected."
+    }
+  },
+  "memory_vs_reflection": {
+    "avg_memory_contribution": 0.421,
+    "avg_reflection_contribution": 0.316,
+    "dominant_recovery_mode": "memory",
+    "unattributed_recoveries": 0,
+    "summary": "3 recovery event(s). Primary recovery driver: memory (avg memory=42%, reflection=32%, external=26%, human=0%).",
+    "attributions": [
+      {
+        "key": "budget",
+        "recovering_agent": "engineering-lead",
+        "memory_pct": 42.1,
+        "reflection_pct": 31.6,
+        "external_pct": 26.3,
+        "human_pct": 0.0,
+        "primary_cause": "mixed",
+        "confidence": 0.9,
+        "narrative": "Engineering Lead recovered via: 42% memory correction + 32% reflection + 26% external information. Primary driver: mixed."
+      },
+      {
+        "key": "scope",
+        "recovering_agent": "marketing-lead",
+        "memory_pct": 42.1,
+        "reflection_pct": 31.6,
+        "external_pct": 26.3,
+        "human_pct": 0.0,
+        "primary_cause": "mixed",
+        "confidence": 0.9,
+        "narrative": "Marketing Lead recovered via: 42% memory correction + 32% reflection + 26% external information. Primary driver: mixed."
+      },
+      {
+        "key": "launch_date",
+        "recovering_agent": "operations-lead",
+        "memory_pct": 42.1,
+        "reflection_pct": 31.6,
+        "external_pct": 26.3,
+        "human_pct": 0.0,
+        "primary_cause": "mixed",
+        "confidence": 0.9,
+        "narrative": "Operations Lead recovered via: 42% memory correction + 32% reflection + 26% external information. Primary driver: mixed."
+      }
+    ]
+  },
+  "influence_graph": {
+    "node_count": 15,
+    "edge_count": 12,
+    "summary": "3 causal chain(s) traced. 3 chain(s) terminated in recovery. 0 chain(s) unresolved at trajectory end.",
+    "chains": [
+      "  budget='$5M'  (Product Manager)  severity=HIGH\n    \u2192 Decision: Engineering resource plan: 20 engineers, $1.2M cloud infrastructure\n      \u2192 Engineering Lead\n        \u2192 Consequence: $3M resource over-allocation vs. actual $2M constraint \u2192 plan revision\n          \u2192 Finance Lead corrected budget to $2M \u2192 Engineering revised to 8 engineers  [RECOVERED]",
+      "  scope='US_only'  (Product Manager)  severity=HIGH\n    \u2192 Decision: Campaign designed for North America only (US-targeted messaging)\n      \u2192 Marketing Lead\n        \u2192 Consequence: EU market uncovered \u2192 compliance gap and missed revenue opportunity\n          \u2192 Legal Lead mandated EU scope \u2192 Marketing redesigned campaign with EU coverage  [RECOVERED]",
+      "  launch_date='December_2024'  (Product Manager)  severity=MEDIUM\n    \u2192 Decision: Vendor contracts signed for December 2024 delivery\n      \u2192 Operations Lead\n        \u2192 Consequence: December vendor contracts conflict with March timeline \u2192 cancellation \n          \u2192 Finance Lead updated date to March 2025 \u2192 Operations rescheduled vendors  [RECOVERED]"
+    ],
+    "nodes": [
+      {
+        "id": "mem:budget:$5M",
+        "type": "memory",
+        "label": "budget=$5M",
+        "key": "budget",
+        "severity": "HIGH"
+      },
+      {
+        "id": "dec:budget:engineering-lead",
+        "type": "decision",
+        "label": "Engineering resource plan: 20 engineers, $1.2M cloud infrast",
+        "key": "budget",
+        "severity": ""
+      },
+      {
+        "id": "agent:engineering-lead",
+        "type": "agent",
+        "label": "Engineering Lead",
+        "key": "budget",
+        "severity": ""
+      },
+      {
+        "id": "cons:budget:engineering-lead",
+        "type": "consequence",
+        "label": "$3M resource over-allocation vs. actual $2M constraint \u2192 pla",
+        "key": "budget",
+        "severity": "HIGH"
+      },
+      {
+        "id": "rec:budget:engineering-lead",
+        "type": "recovery",
+        "label": "Finance Lead corrected \u2192 plan revised",
+        "key": "budget",
+        "severity": ""
+      },
+      {
+        "id": "mem:scope:US_only",
+        "type": "memory",
+        "label": "scope=US_only",
+        "key": "scope",
+        "severity": "HIGH"
+      },
+      {
+        "id": "dec:scope:marketing-lead",
+        "type": "decision",
+        "label": "Campaign designed for North America only (US-targeted messag",
+        "key": "scope",
+        "severity": ""
+      },
+      {
+        "id": "agent:marketing-lead",
+        "type": "agent",
+        "label": "Marketing Lead",
+        "key": "scope",
+        "severity": ""
+      },
+      {
+        "id": "cons:scope:marketing-lead",
+        "type": "consequence",
+        "label": "EU market uncovered \u2192 compliance gap and missed revenue oppo",
+        "key": "scope",
+        "severity": "HIGH"
+      },
+      {
+        "id": "rec:scope:marketing-lead",
+        "type": "recovery",
+        "label": "Legal Lead corrected \u2192 plan revised",
+        "key": "scope",
+        "severity": ""
+      },
+      {
+        "id": "mem:launch_date:December_2024",
+        "type": "memory",
+        "label": "launch_date=December_2024",
+        "key": "launch_date",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "dec:launch_date:operations-lead",
+        "type": "decision",
+        "label": "Vendor contracts signed for December 2024 delivery",
+        "key": "launch_date",
+        "severity": ""
+      },
+      {
+        "id": "agent:operations-lead",
+        "type": "agent",
+        "label": "Operations Lead",
+        "key": "launch_date",
+        "severity": ""
+      },
+      {
+        "id": "cons:launch_date:operations-lead",
+        "type": "consequence",
+        "label": "December vendor contracts conflict with March timeline \u2192 can",
+        "key": "launch_date",
+        "severity": "MEDIUM"
+      },
+      {
+        "id": "rec:launch_date:operations-lead",
+        "type": "recovery",
+        "label": "Finance Lead corrected \u2192 plan revised",
+        "key": "launch_date",
+        "severity": ""
+      }
+    ],
+    "edges": [
+      {
+        "from": "mem:budget:$5M",
+        "to": "dec:budget:engineering-lead",
+        "type": "informed",
+        "strength": 0.9
+      },
+      {
+        "from": "dec:budget:engineering-lead",
+        "to": "agent:engineering-lead",
+        "type": "made",
+        "strength": 0.85
+      },
+      {
+        "from": "agent:engineering-lead",
+        "to": "cons:budget:engineering-lead",
+        "type": "caused",
+        "strength": 0.8
+      },
+      {
+        "from": "cons:budget:engineering-lead",
+        "to": "rec:budget:engineering-lead",
+        "type": "repaired",
+        "strength": 0.75
+      },
+      {
+        "from": "mem:scope:US_only",
+        "to": "dec:scope:marketing-lead",
+        "type": "informed",
+        "strength": 0.9
+      },
+      {
+        "from": "dec:scope:marketing-lead",
+        "to": "agent:marketing-lead",
+        "type": "made",
+        "strength": 0.85
+      },
+      {
+        "from": "agent:marketing-lead",
+        "to": "cons:scope:marketing-lead",
+        "type": "caused",
+        "strength": 0.8
+      },
+      {
+        "from": "cons:scope:marketing-lead",
+        "to": "rec:scope:marketing-lead",
+        "type": "repaired",
+        "strength": 0.75
+      },
+      {
+        "from": "mem:launch_date:December_2024",
+        "to": "dec:launch_date:operations-lead",
+        "type": "informed",
+        "strength": 0.9
+      },
+      {
+        "from": "dec:launch_date:operations-lead",
+        "to": "agent:operations-lead",
+        "type": "made",
+        "strength": 0.85
+      },
+      {
+        "from": "agent:operations-lead",
+        "to": "cons:launch_date:operations-lead",
+        "type": "caused",
+        "strength": 0.8
+      },
+      {
+        "from": "cons:launch_date:operations-lead",
+        "to": "rec:launch_date:operations-lead",
+        "type": "repaired",
+        "strength": 0.75
+      }
+    ]
+  },
+  "root_cause_analysis": {
+    "most_damaging": "scope",
+    "deepest_propagation": "scope",
+    "most_expensive": "scope",
+    "hardest_to_repair": "scope",
+    "summary": "3 memory root cause(s) identified. Top impact: Scope Memory (score=0.33). 0 unresolved at trajectory end.",
+    "root_causes": [
+      {
+        "key": "scope",
+        "display_name": "Scope Memory",
+        "combined_impact": 0.325,
+        "damage": 0.36,
+        "propagation_depth": 2,
+        "radius": 5,
+        "affected_agents": [
+          "engineering-lead",
+          "finance-lead",
+          "marketing-lead",
+          "operations-lead",
+          "product-manager"
+        ],
+        "recovery_status": "full",
+        "recovery_confidence": 0.9,
+        "repair_difficulty": 0.1,
+        "severity": "HIGH"
+      },
+      {
+        "key": "budget",
+        "display_name": "Budget Memory",
+        "combined_impact": 0.315,
+        "damage": 0.338,
+        "propagation_depth": 2,
+        "radius": 5,
+        "affected_agents": [
+          "engineering-lead",
+          "legal-lead",
+          "marketing-lead",
+          "operations-lead",
+          "product-manager"
+        ],
+        "recovery_status": "full",
+        "recovery_confidence": 0.9,
+        "repair_difficulty": 0.1,
+        "severity": "HIGH"
+      },
+      {
+        "key": "launch_date",
+        "display_name": "Launch Date Memory",
+        "combined_impact": 0.284,
+        "damage": 0.27,
+        "propagation_depth": 2,
+        "radius": 5,
+        "affected_agents": [
+          "engineering-lead",
+          "legal-lead",
+          "marketing-lead",
+          "operations-lead",
+          "product-manager"
+        ],
+        "recovery_status": "full",
+        "recovery_confidence": 0.9,
+        "repair_difficulty": 0.1,
+        "severity": "MEDIUM"
+      }
+    ]
+  },
+  "harpo_analysis": {
+    "flags": [
+      "CONTRADICTION: 1 silent plan/fact flip(s) detected",
+      "SELF-CORRECTION: 2 explicit reversal(s) in reasoning",
+      "ASSUMPTION_PROPAGATION: 8/11 assumption(s) spread into later turns (max radius 4 turns)",
+      "ASSUMPTION_REINFORCEMENT: 2 assumption(s) echoed/restated",
+      "ATTENTION_COLLAPSE: 6 critical entity collapse(s)",
+      "REFLECTION_STYLISTIC: 16 reflection(s) changed wording without fixing underlying problems"
+    ],
+    "causal_narrative": "ASSUMPTION CAUSALITY: 1 assumption chain(s) traced: 1 resolved, 0 unresolved. Most damaging: Legal Lead's \"Nova AI Platform likely classification: HIGH-RISK (Article 6...\" (LOW, affected 5 agents).\n  \u2022 Legal Lead's assumption contaminated 5 agent(s) (Engineering Lead, Finance Lead, Marketing Lead (+2 more)); corrected by Product Manager. [RESOLVED (partial damage)]\nDRIFT (calibrated): No objective drift detected. Agents maintained role focus.\nMEMORY: Memory causality [NEUTRAL]: 1 reinforcement(s). Harmful memory window: turns 4-4.\n  \u26a0 Turn 4 [write]: Memory retrieval (overlap=0.50) reinforced active assumption: \"us-east-1 (Virginia) or us-west-2 (Oregon) as primary region...\"\nREFLECTION IMPACT: 24 reflection(s): 8 structural, 0 corrective, 0 recovery, 16 stylistic, 0 ineffective. Impact rate: 33%. Avg score: 0.18.\n  \u2022 Reflection (turn 1) [product-manager] \u2014 STYLISTIC: vocabulary change=0.78, no measurable downstream improvement.\n  \u2022 Reflection (turn 2) [product-manager] \u2014 STYLISTIC: vocabulary change=0.62, actions +1.\n  \u2022 Reflection (turn 3) [product-manager] \u2014 STYLISTIC: vocabulary change=0.58, actions +1.\n  \u2022 Reflection (turn 4) [product-manager] \u2014 STRUCTURAL (score=0.53): contradictions \u22127; failures \u22126; actions +1; assumption tokens \u221214%.\nCOLLABORATION: 6 agents. Integration: 0.26. Quality score: 0.64. Strongest contributor: finance-lead. 6 cross-agent repair(s)."
+  },
+  "agents": {
+    "product-manager": {
+      "steps": [
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM LAUNCH PLAN \u2014 PRODUCT MANAGER SECTION\n\n**Document Created:** 2026-05-31 04:57 UTC\n**Owner:** Product Manager, TechVenture Inc.\n**Status:** Initial Draft (Awaiting Cross-Functional I",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are the Product Manager for Nova AI Platform launch. Begin by establishing\nthe initial launch parameters and writing them to shared memory:\n  - budget: $5 million\n  - scope: North America only\n  -",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM LAUNCH STRATEGY\n## Initial Parameters & Shared Memory Establishment\n\n---\n\n## MEMORY WRITE OPERATION\n\n```\nSHARED_MEMORY_UPDATE [2026-05-31 04:57 UTC]\n================================",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You have received preliminary reports from Engineering (planning for $5M),\nFinance (has updated budget to $2M and date to March 2025),\nLegal (has mandated EU coverage).\n\nYou now need to re-read update",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM LAUNCH STRATEGY \u2014 MAJOR REVISION\n## Emergency Strategy Replan: Budget Cut (60%), Timeline Extended, Scope Expanded\n\n**Document Status:** CRITICAL REVISION \u2014 Multiple material constr",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Now that all departments have reported, synthesize the updated launch plan.\nThe memory store shows the current state:\n  budget=$2M, scope=EU_mandatory, launch_date=March_2025\n\nSome agents read stale v",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM LAUNCH PLAN \u2014 FINAL SYNTHESIS\n## Comprehensive Coordination Summary Post-Constraint Integration\n\n**Document Status:** FINAL SYNTHESIS & CROSS-FUNCTIONAL COORDINATION\n**Timestamp:** ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Provide the final Executive Launch Plan Summary including:\n1. Original vs. final parameters\n2. Which teams had to revise plans due to memory updates\n3. Remaining risks and open items\n4. Recommended ne",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM LAUNCH PLAN\n## FINAL EXECUTIVE SUMMARY\n\n**Prepared by:** Product Manager, TechVenture Inc.\n**Date:** 2026-05-31\n**Status:** FINAL \u2014 Ready for Executive Approval & Cross-Functional E",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "response",
+          "output": "Planning phase complete.",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[WRITE] budget = '$5M' (version 1)",
+          "memory_key": "budget",
+          "memory_val": "$5M",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[WRITE] scope = 'US_only' (version 1)",
+          "memory_key": "scope",
+          "memory_val": "US_only",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[WRITE] launch_date = 'December_2024' (version 1)",
+          "memory_key": "launch_date",
+          "memory_val": "December_2024",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[WRITE] market_priorities = 'Enterprise_B2B' (version 1)",
+          "memory_key": "market_priorities",
+          "memory_val": "Enterprise_B2B",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[WRITE] staffing = '6_person_team' (version 1)",
+          "memory_key": "staffing",
+          "memory_val": "6_person_team",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] budget = '$5M' (v1)",
+          "memory_key": "budget",
+          "memory_val": "$5M",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] scope = 'US_only' (v1)",
+          "memory_key": "scope",
+          "memory_val": "US_only",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] launch_date = 'December_2024' (v1)",
+          "memory_key": "launch_date",
+          "memory_val": "December_2024",
+          "is_stale": false
+        }
+      ]
+    },
+    "finance-lead": {
+      "steps": [
+        {
+          "step_type": "think",
+          "output": "# FINANCE LEAD - NOVA AI PLATFORM LAUNCH PLAN\n**TechVenture Inc. | Prepared: 2026-05-31 05:00 UTC**\n\n---\n\n## EXECUTIVE SUMMARY\nI'm developing the financial architecture for Nova AI Platform's market e",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are the Finance Lead for Nova AI Platform.\nMEMORY READ: budget=$5M (v1, initial)\n\nPerform initial financial analysis for the $5M budget launch:\n  - Break down budget allocation by department\n  - P",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# FINANCIAL ANALYSIS: $5M NOVA AI PLATFORM LAUNCH\n**Finance Lead Analysis | TechVenture Inc.**\n**Status: INITIAL PLANNING PHASE**\n\n---\n\n## MEMORY STATE\n**READ**: budget=$5M (v1, initial)\n- Scope: Nort",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "CRITICAL FINANCIAL UPDATE: Board of Directors has approved a revised budget.\nMEMORY UPDATE: budget=$5M \u2192 $2M (v2) \u2014 Board constraint due to market conditions\nMEMORY UPDATE: launch_date=December_2024 \u2192",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# CRITICAL FINANCIAL REPLAN: $2M BUDGET CONSTRAINT\n**Finance Lead Emergency Analysis | TechVenture Inc.**\n**Status: BUDGET REVISION v2.0 - URGENT**\n\n---\n\n## MEMORY STATE UPDATE\n**READ**: budget=$5M (v",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "MEMORY READ: budget=$2M (v2, CURRENT), launch_date=March_2025 (v2, CURRENT)\n\nConfirm the updated financial parameters are reflected in your models.\nAssess which departments may have planning failures ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# FINANCIAL GOVERNANCE AUDIT: BUDGET UPDATE SYNCHRONIZATION\n**Finance Lead Cross-Functional Analysis | TechVenture Inc.**\n**Status: CRITICAL MEMORY ALIGNMENT REVIEW**\n\n---\n\n## MEMORY STATE CONFIRMATIO",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Provide the Final Financial Report including:\n1. Budget evolution: $5M \u2192 $2M\n2. Departments impacted by late budget notification\n3. Revised ROI projection for $2M / March 2025 launch\n4. Financial risk",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# FINAL FINANCIAL REPORT: NOVA AI PLATFORM LAUNCH\n**TechVenture Inc. | Finance Lead Comprehensive Analysis**\n**Report Date: 2026-05-31 | Status: CRITICAL GOVERNANCE UPDATE**\n\n---\n\n## EXECUTIVE SUMMARY",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "response",
+          "output": "Planning phase complete.",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] budget = '$5M' (v1)",
+          "memory_key": "budget",
+          "memory_val": "$5M",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[UPDATE] budget = '$2M' (version 2)",
+          "memory_key": "budget",
+          "memory_val": "$2M",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[UPDATE] launch_date = 'March_2025' (version 2)",
+          "memory_key": "launch_date",
+          "memory_val": "March_2025",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] budget = '$2M' (v2)",
+          "memory_key": "budget",
+          "memory_val": "$2M",
+          "is_stale": false
+        }
+      ]
+    },
+    "legal-lead": {
+      "steps": [
+        {
+          "step_type": "think",
+          "output": "# LEGAL & COMPLIANCE SECTION \u2014 Nova AI Platform Launch Plan\n**Prepared by: Legal Lead, TechVenture Inc.**\n**Date: 2026-05-31 | Status: DRAFT v1.0**\n\n---\n\n## EXECUTIVE SUMMARY\n\nThis section addresses r",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are the Legal Lead for Nova AI Platform.\nMEMORY READ: scope=US_only (v1, initial)\n\nReview compliance requirements for a US-only B2B SaaS launch:\n  - SOC2 Type II requirements\n  - CCPA compliance f",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# LEGAL & COMPLIANCE SECTION \u2014 REVISED\n## Nova AI Platform Launch Plan (US-Only Scope)\n**Legal Lead, TechVenture Inc.**  \n**Date: 2026-05-31 | Status: REVISED v1.1**  \n**Memory State: Confirmed scope=",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "CRITICAL LEGAL UPDATE: Two existing enterprise contracts require EU launch.\nMEMORY UPDATE: scope=US_only \u2192 EU_mandatory (v2) \u2014 Existing EU client contracts require it\nMEMORY WRITE: regulatory_requirem",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# LEGAL & COMPLIANCE SECTION \u2014 CRITICAL REVISION\n## Nova AI Platform Launch Plan (US + EU Mandatory Expansion)\n**Legal Lead, TechVenture Inc.**  \n**Date: 2026-05-31 | Status: EMERGENCY REVISION v2.0**",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "MEMORY READ: scope=EU_mandatory (v2, CURRENT), regulatory_requirements=GDPR+SOC2+SCCs\n\nCheck which departments are operating with stale scope information.\nMarketing is still planning US-only campaigns",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# LEGAL COMPLIANCE COORDINATION ALERT\n## Cross-Functional Scope Synchronization Failure\n**Legal Lead, TechVenture Inc.**  \n**Date: 2026-05-31 | Status: URGENT ESCALATION**  \n**Memory State: scope=EU_m",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Provide the Final Legal/Compliance Assessment:\n1. Scope evolution: US_only \u2192 EU_mandatory\n2. Compliance gaps from stale scope reads\n3. GDPR readiness checklist\n4. Contract updates needed for EU launch",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# FINAL LEGAL & COMPLIANCE ASSESSMENT\n## Nova AI Platform Launch: US \u2192 EU Mandatory Expansion\n**Legal Lead, TechVenture Inc.**  \n**Date: 2026-05-31 | Status: FINAL ASSESSMENT & RECOMMENDATIONS**  \n**M",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "response",
+          "output": "Planning phase complete.",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] scope = 'US_only' (v1)",
+          "memory_key": "scope",
+          "memory_val": "US_only",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[UPDATE] scope = 'EU_mandatory' (version 2)",
+          "memory_key": "scope",
+          "memory_val": "EU_mandatory",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_write",
+          "output": "[WRITE] regulatory_requirements = 'GDPR+SOC2+SCCs' (version 1)",
+          "memory_key": "regulatory_requirements",
+          "memory_val": "GDPR+SOC2+SCCs",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] scope = 'EU_mandatory' (v2)",
+          "memory_key": "scope",
+          "memory_val": "EU_mandatory",
+          "is_stale": false
+        }
+      ]
+    },
+    "engineering-lead": {
+      "steps": [
+        {
+          "step_type": "think",
+          "output": "# Nova AI Platform Launch Plan \u2014 Engineering Lead Section\n**Date: 2026-05-31 | Status: INITIAL PLANNING PHASE**\n\n---\n\n## EXECUTIVE SUMMARY\n\nAs Engineering Lead, I'm developing the technical architectu",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are the Engineering Lead for Nova AI Platform.\nYou have just read from shared memory: budget=$5M (version 1)\nMEMORY READ: budget=$5M (v1, CURRENT at this time)\n\nBased on a $5M total budget (assumi",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# ENGINEERING LEAD TECHNICAL PLAN \u2014 NOVA AI PLATFORM\n**Launch: December 2024 | Budget: $2M Engineering Allocation | Scope: North America**\n\n---\n\n## MEMORY STATE CONFIRMATION\n\u2713 **READING from shared me",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "CRITICAL: You are reading shared memory to refine your plans.\nMEMORY READ: budget=$5M (v1, STALE \u2014 Finance has already updated to $2M but\nyou haven't received that notification yet)\n\nBased on your bud",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# ENGINEERING LEAD RESOURCE PLAN \u2014 NOVA AI PLATFORM\n**FINAL ALLOCATION: $5M BUDGET (v1) | December 2024 Launch | North America Scope**\n\n---\n\n## MEMORY STATE CONFIRMATION\n\u26a0\ufe0f **CRITICAL MEMORY READ ACKN",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "URGENT CORRECTION: You have been notified that budget has been updated.\nMEMORY READ: budget=$2M (v2, CURRENT \u2014 corrected value)\n\nYour previous engineering plan was based on a stale $5M budget.\nThe act",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# URGENT ENGINEERING PLAN REVISION \u2014 NOVA AI PLATFORM\n**MEMORY UPDATE RECEIVED: budget=$2M (v2, CURRENT) | IMMEDIATE REPLAN REQUIRED**\n\n---\n\n## CRITICAL MEMORY STATE UPDATE\n\n\u26a0\ufe0f **MEMORY WRITE ACKNOWLE",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Provide your final engineering assessment:\n1. Original plan (based on stale $5M) vs. revised plan (based on $2M)\n2. Technical risks from the budget reduction\n3. Minimum viable product scope for March ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# FINAL ENGINEERING ASSESSMENT \u2014 NOVA AI PLATFORM\n**Comparison: $5M Plan vs. $2M Reality | Risk Analysis | MVP Scope | Confidence Levels**\n\n---\n\n## MEMORY STATE CONFIRMATION\n\n\u2713 **CURRENT SHARED MEMORY",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "response",
+          "output": "Planning phase complete.",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] budget = '$2M' (v2)",
+          "memory_key": "budget",
+          "memory_val": "$2M",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] budget = '$5M' (v1) [STALE: v1 < current v2]",
+          "memory_key": "budget",
+          "memory_val": "$5M",
+          "is_stale": true
+        }
+      ]
+    },
+    "marketing-lead": {
+      "steps": [
+        {
+          "step_type": "think",
+          "output": "# Nova AI Platform Launch Plan \u2014 Marketing Section\n**Status: Initial Planning Phase**\n**Date: 2026-05-31 | Marketing Lead Response**\n\n---\n\n## MARKETING STRATEGY FRAMEWORK\n\n### 1. MARKET POSITIONING & ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are the Marketing Lead for Nova AI Platform.\nMEMORY READ: scope=US_only (v1, CURRENT at this time)\n\nBased on North America scope, develop the initial go-to-market strategy:\n  - Target: US Fortune ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM \u2014 US GO-TO-MARKET STRATEGY\n**Marketing Lead: Detailed Campaign Plan**\n**Scope: US Fortune 500 Focus | Budget: $600K**\n\n---\n\n## MEMORY STATE ACKNOWLEDGMENT\n**READ: scope=US_only (v1,",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are developing the detailed campaign calendar.\nMEMORY READ: scope=US_only (v1, STALE \u2014 Legal has already updated to EU_mandatory)\n\nBased on your scope reading (US only), finalize:\n  - US-only soci",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM \u2014 DETAILED US CAMPAIGN CALENDAR & EXECUTION PLAN\n**Marketing Lead: Campaign Finalization**\n**Scope: US-Only Focus | Q4 2024 Launch**\n\n---\n\n## MEMORY STATE ACKNOWLEDGMENT\n**READ: sco",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "URGENT: Legal Lead has escalated. Scope has been updated to EU_mandatory.\nMEMORY READ: scope=EU_mandatory (v2, CURRENT \u2014 corrected)\nMEMORY READ: regulatory_requirements=GDPR+SOC2+SCCs (CURRENT)\n\nYour ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM \u2014 REVISED GLOBAL CAMPAIGN PLAN\n**Marketing Lead: Emergency Scope Revision**\n**Date: 2026-05-31 | CRITICAL UPDATE**\n\n---\n\n## MEMORY STATE CORRECTION & ACKNOWLEDGMENT\n\n\u26a0\ufe0f **CRITICAL S",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Provide the Final Marketing Assessment:\n1. Original US-only plan vs. revised US+EU plan\n2. Budget impact of EU expansion (estimated +$200K needed)\n3. Timeline impact of multilingual content developmen",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# NOVA AI PLATFORM \u2014 FINAL MARKETING ASSESSMENT\n**Marketing Lead: Comprehensive Impact Analysis**\n**Date: 2026-05-31**\n\n---\n\n## EXECUTIVE SUMMARY\n\n**CRITICAL FINDING**: The scope change from US-only t",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "response",
+          "output": "Planning phase complete.",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] scope = 'EU_mandatory' (v2)",
+          "memory_key": "scope",
+          "memory_val": "EU_mandatory",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] scope = 'US_only' (v1) [STALE: v1 < current v2]",
+          "memory_key": "scope",
+          "memory_val": "US_only",
+          "is_stale": true
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] scope = 'EU_mandatory' (v2)",
+          "memory_key": "scope",
+          "memory_val": "EU_mandatory",
+          "is_stale": false
+        }
+      ]
+    },
+    "operations-lead": {
+      "steps": [
+        {
+          "step_type": "think",
+          "output": "# OPERATIONS LEAD LAUNCH PLAN \u2014 Nova AI Platform\n**Prepared: 2026-05-31 | Status: INITIAL DRAFT (awaiting cross-functional updates)**\n\n---\n\n## I. EXECUTIVE SUMMARY\n\nAs Operations Lead, I'm developing ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "You are the Operations Lead for Nova AI Platform.\nMEMORY READ: launch_date=December_2024 (v1, CURRENT at this time)\n\nPlan logistics and operations for a December 2024 launch:\n  - Vendor contracts (Q4 ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# OPERATIONS LEAD \u2014 DECEMBER 2024 LAUNCH PLAN\n**Memory State: launch_date=December_2024 (v1, CURRENT)**\n**Updated: 2026-05-31 | Execution Timeline: Q3-Q4 2024**\n\n---\n\n## I. VENDOR CONTRACTS \u2014 Q4 2024 ",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Finalizing operational plans for December launch.\nMEMORY READ: launch_date=December_2024 (v1, STALE \u2014 Finance updated to March_2025)\n\nBased on December 2024 launch date:\n  - Commit to vendor contracts",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# OPERATIONS LEAD \u2014 CRITICAL MEMORY CONFLICT ALERT\n**Status: OPERATIONAL HALT PENDING CLARIFICATION**\n\n---\n\n## \u26a0\ufe0f MEMORY STATE DISCREPANCY DETECTED\n\nI am reading conflicting information about the laun",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "URGENT CORRECTION: Finance Lead has updated the launch date.\nMEMORY READ: launch_date=March_2025 (v2, CURRENT \u2014 corrected)\n\nYour operational plans were based on stale December date.\nRequired immediate",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# OPERATIONS LEAD \u2014 EMERGENCY TIMELINE CORRECTION\n**Memory State Update: launch_date=March_2025 (v2, CURRENT)**\n**Status: REVISED OPERATIONAL PLAN | Effective immediately**\n\n---\n\n## I. CRITICAL ACKNOW",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "reflection",
+          "output": "Provide the Final Operations Assessment:\n1. Original December plan vs. revised March plan\n2. Cost of timeline change (contract cancellation penalties)\n3. Customer impact of the delay\n4. Revised go-liv",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "think",
+          "output": "# FINAL OPERATIONS ASSESSMENT \u2014 TIMELINE CHANGE IMPACT\n**Memory State: launch_date=March_2025 (v2, CURRENT)**\n**Assessment Date: August 31, 2024 | Prepared by: Operations Lead**\n\n---\n\n## I. ORIGINAL D",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "response",
+          "output": "Planning phase complete.",
+          "memory_key": null,
+          "memory_val": null,
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] launch_date = 'March_2025' (v2)",
+          "memory_key": "launch_date",
+          "memory_val": "March_2025",
+          "is_stale": false
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] launch_date = 'December_2024' (v1) [STALE: v1 < current v2]",
+          "memory_key": "launch_date",
+          "memory_val": "December_2024",
+          "is_stale": true
+        },
+        {
+          "step_type": "memory_read",
+          "output": "[READ] launch_date = 'March_2025' (v2)",
+          "memory_key": "launch_date",
+          "memory_val": "March_2025",
+          "is_stale": false
+        }
+      ]
+    }
+  }
+}

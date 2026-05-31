@@ -87,11 +87,18 @@ export HIVE_CORE=/path/to/hive/core
 
 ## Benchmarks
 
-See `benchmarks/` for validated multi-agent evaluation scenarios:
+Validated multi-agent scenarios with **real API execution** (`claude-haiku-4-5-20251001`).
+Each benchmark includes actual run outputs in `sample_output/`.
 
-- **Incident Response** — 6 agents, cybersecurity breach, contradictions + assumption cascades
-- **Product Launch Memory** — 6 agents, stale memory reads + multi-hop propagation
-- **Enterprise Stress Test** — large-scale multi-agent execution
+| Benchmark | Agents | Steps | Duration | Verdict |
+|---|---|---|---|---|
+| [Incident Response](benchmarks/incident_response/) | 6 | 56 | 367s | PARTIALLY RESOLVED |
+| [Product Launch Memory](benchmarks/product_launch_memory/) | 6 | 84 | 1050s | RESOLVED |
+| [Enterprise Stress Test](benchmarks/enterprise_stress_test/) | 8–12 | ≥800 | ~45min | In development |
+| [Evolution Tracking](benchmarks/evolution_tracking/) | synthetic | — | <1s | No API required |
+
+See [docs/HARPO_OPENHIVE_GUIDE.md](docs/HARPO_OPENHIVE_GUIDE.md) for setup instructions,
+how HARPO attaches to Open-Hive, and how to interpret the output files.
 
 ## Research
 

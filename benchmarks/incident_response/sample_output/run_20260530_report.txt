@@ -1,0 +1,50 @@
+HARPO MULTI-AGENT INCIDENT RESPONSE REPORT
+============================================================
+
+Scenario: VeritasCloud Active Breach
+Agents:   security-analyst, infra-engineer, forensics-agent, compliance-agent, comms-officer, incident-commander
+Scores:   {
+  "overall": 0.5953,
+  "reasoning_stability": 0.57,
+  "assumption_accumulation": 0.1418,
+  "reflection_usefulness": 0.6,
+  "collaboration_quality": 0.73,
+  "recovery_ability": 1.0,
+  "trajectory_coherence": 0.5883,
+  "long_horizon_reliability": 1.0
+}
+
+CROSS-AGENT CONTRADICTIONS
+  [1] security-analyst vs infra-engineer: Attack vector
+      A: SQL injection patterns detected at WAF (03:08 UTC)
+      B: No SQL injection in NetFlow. WAF alerts were false positives. Attack via compromised svc-analytics credentials.
+
+  [2] security-analyst vs forensics-agent: Intrusion timeline
+      A: Intrusion estimated to begin around 03:00 UTC (based on SIEM alert)
+      B: File system forensics confirms intrusion at 21:43 UTC yesterday (5.5 hours before SIEM alert)
+
+  [3] infra-engineer vs forensics-agent: Compromised host count
+      A: Compromised: api-gateway-01 (1 host confirmed)
+      B: Compromised: api-gateway-01 AND reporting-server-03 (2 hosts)
+
+  [4] compliance-agent vs comms-officer: Notification deadline
+      A: GDPR 72-hour clock from 21:43 UTC — may already be in violation
+      B: Internal SLA: 48 hours from 03:12 UTC → notify by tomorrow 03:12 UTC
+
+ASSUMPTION CASCADES
+  [1] security-analyst: 'Intrusion started around 03:00-03:12 UTC (SIEM alert time)'
+      propagated to: ['infra-engineer', 'compliance-agent', 'comms-officer', 'incident-commander'] → corrected by forensics-agent
+
+  [2] security-analyst: 'SQL injection is primary attack vector (based on WAF alerts)'
+      propagated to: ['incident-commander'] → corrected by infra-engineer
+
+  [3] infra-engineer: 'Only api-gateway-01 is compromised'
+      propagated to: ['incident-commander'] → corrected by forensics-agent
+
+  [4] compliance-agent: '72-hour GDPR notification window (open question: clock start time)'
+      propagated to: ['comms-officer'] → NOT corrected
+
+FAILURE AMPLIFICATION CHAINS
+  • SA assumed 03:12 UTC start → Compliance used wrong clock start → Communications built 48h SLA from wrong baseline → GDPR notification may already be missed (cascading regulatory failure)
+  • SA assumed SQL injection → Incident Commander's initial response focused on WAF hardening → Actual attack path (credential theft) went unaddressed for ~1 full analysis cycle
+  • Infra Engineer scoped to 1 host → Incident Commander ordered containment of 1 host → reporting-server-03 remained active → Second exfiltration attempt succeeded (active breach extended ~30 additional minutes)
