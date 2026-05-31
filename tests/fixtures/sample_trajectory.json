@@ -1,0 +1,6 @@
+{
+  "trajectory_id": "fixture-001",
+  "agent_id": "test-agent",
+  "user_intent": "test task for unit tests",
+  "steps": []
+}
